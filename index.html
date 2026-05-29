@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin | Portfolio</title>
+    <style>
+        /* Base page styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6; /* Soft gray background makes white islands pop */
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* 🏝️ The Floating Island CSS */
+        .island-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* The drop shadow */
+            border: 1px solid #eaeaea; /* Subtle border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* Aligns text and iframe side-by-side */
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Makes the island float up slightly when hovered */
+        .island-card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .content {
+            flex: 1; /* Takes up half the card */
+        }
+
+        /* 📺 The iFrame Player CSS */
+        .iframe-container {
+            flex: 1; /* Takes up the other half */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 4px solid #f8f9fa; /* Gives the player a bezel */
+            background-color: #eee;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Stacks the text and iframe vertically on mobile phones */
+        @media (max-width: 768px) {
+            .island-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hi there, I'm Kevin 👋</h1>
+        <p><strong>Program Organizer | Technical Support Specialist | Technical Communicator</strong></p>
+    </header>
+
+    <!-- Floating Island 1: IEEE -->
+    <div class="island-card">
+        <div class="content">
+            <h2>IEEE Event Organization</h2>
+            <p><strong>IEEE AESS SYP Congress 2025 | EV Horizons Summit 2026</strong></p>
+            <p>Designed and executed comprehensive event schedules aligned with strategic objectives. Managed on-site technical operations, overseeing sound systems, visual displays, and facilities to guarantee a flawless experience.</p>
+        </div>
+        <div class="iframe-container">
+            <!-- Replace the src link below with the actual conference website -->
+            <iframe src="https://www.ieee.org/" title="IEEE Website Preview"></iframe>
+        </div>
+    </div>
+
+    <!-- Floating Island 2: Women in Space Kenya -->
+    <div class="island-card">
+        <div class="content">
+            <h2>Women in Space Kenya</h2>
+            <p><strong>Africa Women in Space Conference 2025 | Daystar Tech Creators</strong></p>
+            <p>Served as the lead technical support for the Africa Women in Space Conference, ensuring all A/V and operational systems functioned perfectly. Co-curated educational outreach initiatives translating complex STEM concepts.</p>
+        </div>
+        <div class="iframe-container">
+            <!-- Replace the src link below with the actual WiSK website -->
+            <iframe src="https://en.wikipedia.org/wiki/Space" title="Space Preview"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
