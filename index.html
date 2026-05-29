@@ -1,130 +1,1059 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin | Portfolio</title>
-    <style>
-        /* 🎨 Color Theme */
-        :root {
-            --cream-bg: #F9F6F0; /* Soft cream background */
-            --text-dark: #3E4035; /* Dark olive for readable body text */
-            --heading-green: #386641; /* Rich forest green */
-            --light-brown: #BC9A78; /* Warm light brown accents */
-            --island-bg: #FFFFFF; /* Pure white to make islands pop */
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kevin Kuria Maina — Aeronautical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Base page styling */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--cream-bg); 
-            color: var(--text-dark);
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.6;
-        }
+  :root {
+    --navy: #070b18;
+    --navy2: #0d1525;
+    --navy3: #141f33;
+    --blue: #3a8ef6;
+    --blue-dim: #1a5fb4;
+    --amber: #f5a623;
+    --amber-dim: #c47d0e;
+    --white: #f0f4ff;
+    --muted: #8a9ab8;
+    --border: rgba(58,142,246,0.18);
+    --border-amber: rgba(245,166,35,0.25);
+    --font-display: 'Oxanium', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+  html { scroll-behavior: smooth; }
 
-        h1, h2 {
-            color: var(--heading-green);
-            margin-top: 0;
-        }
+  body {
+    background-color: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-        header p {
-            color: var(--light-brown);
-            font-size: 1.1em;
-            margin-top: -10px;
-        }
+  /* Blueprint grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(58,142,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(58,142,246,0.04) 1px, transparent 1px),
+      linear-gradient(rgba(58,142,246,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(58,142,246,0.015) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-        /* 🏝️ The Floating Island CSS */
-        .island-card {
-            background: var(--island-bg);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(56, 102, 65, 0.08); /* Soft green-tinted shadow */
-            border: 1px solid var(--light-brown); /* Light brown border */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            display: flex; 
-            gap: 30px;
-            align-items: center;
-        }
+  .wrapper { position: relative; z-index: 1; }
 
-        /* Makes the island float up and changes border to green when hovered */
-        .island-card:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 40px rgba(56, 102, 65, 0.15); 
-            border-color: var(--heading-green); 
-        }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(7,11,24,0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
 
-        .content {
-            flex: 1; 
-        }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 2.5rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--amber);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--amber);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+    color: var(--white);
+  }
+  .hero h1 span { color: var(--blue); }
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .hero-desc {
+    max-width: 560px;
+    color: #c0ceeb;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #5aa3ff; }
+  .btn-outline {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 
-        /* 📺 The iFrame Player CSS */
-        .iframe-container {
-            flex: 1; 
-            border-radius: 12px;
-            overflow: hidden;
-            border: 4px solid var(--cream-bg); /* Matches background for a clean bezel */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            background-color: #eee;
-        }
+  .hero-scroll {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
 
-        iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
-        }
+  /* ── SECTION STRUCTURE ── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--amber);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--amber);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--white);
+  }
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
 
-        /* Stacks the text and iframe vertically on mobile phones */
-        @media (max-width: 768px) {
-            .island-card {
-                flex-direction: column;
-            }
-            .iframe-container {
-                width: 100%;
-            }
-        }
-    </style>
+  /* ── LEADERSHIP (main feature) ── */
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) { .leadership-grid { grid-template-columns: 1fr; } }
+
+  .org-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .org-card:hover { border-color: rgba(58,142,246,0.5); }
+
+  .org-card-header {
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .org-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+  .org-icon.ieee { background: rgba(58,142,246,0.15); color: var(--blue); border: 1px solid rgba(58,142,246,0.3); }
+  .org-icon.wis  { background: rgba(245,166,35,0.1);  color: var(--amber); border: 1px solid rgba(245,166,35,0.3); }
+
+  .org-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .org-role {
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .org-card-body { padding: 1.5rem 1.75rem; }
+
+  .org-events {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  .event-item {
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid var(--blue);
+    border-radius: 0 2px 2px 0;
+  }
+  .event-item.amber-accent { border-left-color: var(--amber); }
+  .event-name {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .event-year {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .responsibilities { display: flex; flex-direction: column; gap: 1rem; }
+  .responsibility-block {}
+  .resp-heading {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .resp-heading.amber { color: var(--amber); }
+  .resp-heading::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+  .resp-body {
+    color: #b0c0dd;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    padding-left: 1.1rem;
+  }
+
+  .org-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+    text-transform: uppercase;
+  }
+  .org-link:hover { color: var(--blue); }
+  .org-link svg { width: 12px; height: 12px; }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+  .project-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.2s;
+  }
+  .project-card:hover {
+    border-color: rgba(58,142,246,0.45);
+    transform: translateY(-2px);
+  }
+  .project-num {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+    background: rgba(58,142,246,0.1);
+    color: var(--blue);
+    border: 1px solid rgba(58,142,246,0.2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .tag.amber-tag {
+    background: rgba(245,166,35,0.1);
+    color: var(--amber);
+    border-color: rgba(245,166,35,0.2);
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-meta {}
+  .timeline-period {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+  .timeline-content {}
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.15rem;
+  }
+  .timeline-org {
+    font-size: 0.85rem;
+    color: var(--blue);
+    margin-bottom: 0.75rem;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    color: #b0c0dd;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.65;
+  }
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: 0.75rem;
+    top: 0.22rem;
+  }
+  @media (max-width: 640px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-group {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.25rem 1.4rem;
+  }
+  .skill-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.85rem;
+  }
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .skill-item {
+    font-size: 0.88rem;
+    color: #c0ceeb;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-item::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  /* ── EDUCATION & CERTS ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  @media (max-width: 640px) { .edu-grid { grid-template-columns: 1fr; } }
+
+  .edu-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.4rem 1.6rem;
+  }
+  .edu-badge {
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+  .edu-title {
+    font-family: var(--font-display);
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .edu-org { font-size: 0.85rem; color: var(--blue); margin-bottom: 0.3rem; }
+  .edu-period { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+
+  .cert-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+  .cert-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-name { font-size: 0.88rem; color: #c0ceeb; }
+  .cert-issuer { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
+  .cert-year { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); flex-shrink: 0; }
+
+  /* ── CONTACT / FOOTER ── */
+  .contact-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 720px) { .contact-section { grid-template-columns: 1fr; } }
+
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .contact-headline span { color: var(--blue); }
+  .contact-text { color: var(--muted); font-size: 0.95rem; max-width: 380px; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 0.85rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    color: inherit;
+  }
+  .contact-link:hover { border-color: rgba(58,142,246,0.5); }
+  .contact-link-icon {
+    width: 32px; height: 32px;
+    border-radius: 2px;
+    background: rgba(58,142,246,0.1);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-link-icon svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-link-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.1rem; }
+  .contact-link-value { font-size: 0.9rem; color: var(--white); }
+
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  footer p { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
+
+  /* ── FADE IN ANIMATION ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* responsive nav */
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.1rem; }
+    .nav-links li:nth-child(n+4) { display: none; }
+    .hero { padding: 6rem 1.25rem 3rem; }
+    section { padding: 4rem 1.25rem; }
+    .contact-section { padding: 4rem 1.25rem; }
+    footer { padding: 1.5rem 1.25rem 2.5rem; }
+  }
+</style>
 </head>
 <body>
+<div class="wrapper">
 
-    <header>
-        <h1>Hi there, I'm Kevin 👋</h1>
-        <p><strong>Program Organizer | Technical Support Specialist | Technical Communicator</strong></p>
-    </header>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">KKM</a>
+  <ul class="nav-links">
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <!-- Floating Island 1: IEEE -->
-    <div class="island-card">
-        <div class="content">
-            <h2>IEEE Event Organization</h2>
-            <p><strong>IEEE AESS SYP Congress 2025 | EV Horizons Summit 2026</strong></p>
-            <p>Designed and executed comprehensive event schedules aligned with strategic objectives. Managed on-site technical operations, overseeing sound systems, visual displays, and facilities to guarantee a flawless experience.</p>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <p class="hero-tag">Aeronautical Engineering · Nairobi, Kenya</p>
+  <h1>Kevin<br /><span>Kuria</span> Maina</h1>
+  <p class="hero-sub">Engineer · Organizer · Technical Communicator</p>
+  <p class="hero-desc">
+    Final year Aeronautical Engineering student at the Technical University of Kenya, specialising in avionics and airframes. Beyond the lab and lecture hall, I help build communities — planning conferences, running operations, and bridging engineering with leadership.
+  </p>
+  <div class="hero-ctas">
+    <a href="#leadership" class="btn btn-primary">View My Work</a>
+    <a href="mailto:Kevinmaina846@gmail.com" class="btn btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- LEADERSHIP — FEATURE SECTION -->
+<section id="leadership" class="fade-in">
+  <p class="section-label">Leadership &amp; Community</p>
+  <h2 class="section-title">Conferences, Outreach &amp; Operations</h2>
+
+  <div class="leadership-grid">
+
+    <!-- IEEE -->
+    <div class="org-card">
+      <div class="org-card-header">
+        <div class="org-icon ieee">IEEE</div>
+        <div>
+          <p class="org-name">IEEE Aerospace &amp; Electronic Systems Society</p>
+          <p class="org-role">Vice Chair · Student Branch, Nairobi</p>
         </div>
-        <div class="iframe-container">
-            <!-- IEEE AESS SYP Live Site -->
-            <iframe src="https://aess-syp.org/" title="IEEE AESS SYP Website Preview"></iframe>
+      </div>
+      <div class="org-card-body">
+        <div class="org-events">
+          <div class="event-item">
+            <p class="event-name">IEEE AESS SYP Congress 2025</p>
+            <p class="event-year">Student &amp; Young Professionals — 2025</p>
+          </div>
+          <div class="event-item">
+            <p class="event-name">EV Horizons Summit 2026</p>
+            <p class="event-year">Electric Vehicle Industry Conference — 2026</p>
+          </div>
         </div>
+
+        <div class="responsibilities">
+          <div class="responsibility-block">
+            <p class="resp-heading">Programme Design</p>
+            <p class="resp-body">
+              Crafted end-to-end event schedules rooted in each conference's strategic goals and objectives. Built speaker line-ups by identifying prospective speakers across industry and academia, managing tentative confirmations through to finalised programmes.
+            </p>
+          </div>
+          <div class="responsibility-block">
+            <p class="resp-heading">Technical &amp; Cross-Committee Support</p>
+            <p class="resp-body">
+              Acted as the connective layer between committees — ensuring logistics delivered the facilities speakers needed, that sound systems and screens were operational, and that every technical dependency was met before doors opened. Mentored peer groups and led class sessions throughout the planning cycle.
+            </p>
+          </div>
+        </div>
+
+        <a href="https://aess-syp.org/" target="_blank" rel="noopener" class="org-link">
+          aess-syp.org
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Floating Island 2: Women in Space Kenya -->
-    <div class="island-card">
-        <div class="content">
-            <h2>Women in Space Kenya</h2>
-            <p><strong>Africa Women in Space Conference 2025 | Daystar Tech Creators</strong></p>
-            <p>Served as the lead technical support for the Africa Women in Space Conference, ensuring all A/V and operational systems functioned perfectly. Co-curated educational outreach initiatives translating complex STEM concepts.</p>
+    <!-- Women in Space Kenya -->
+    <div class="org-card">
+      <div class="org-card-header">
+        <div class="org-icon wis">WiS</div>
+        <div>
+          <p class="org-name">Women in Space Kenya</p>
+          <p class="org-role">Outreach Programmes Coordinator</p>
         </div>
-        <div class="iframe-container">
-            <!-- WiSK Live Site -->
-            <iframe src="https://womeninspace.ke/" title="Women in Space Kenya Preview"></iframe>
+      </div>
+      <div class="org-card-body">
+        <div class="org-events">
+          <div class="event-item amber-accent">
+            <p class="event-name">Africa Women in Space Conference 2025</p>
+            <p class="event-year">Continental Industry Conference — 2025</p>
+          </div>
+          <div class="event-item amber-accent">
+            <p class="event-name">Daystar Tech Creators Experience</p>
+            <p class="event-year">Educational Outreach Programme</p>
+          </div>
         </div>
+
+        <div class="responsibilities">
+          <div class="responsibility-block">
+            <p class="resp-heading amber">Outreach &amp; Educational Programming</p>
+            <p class="resp-body">
+              Plan and co-curate educational outreach programmes designed to bring STEM — and specifically space science — to underrepresented communities. Collaborated on the Daystar Tech Creators Experience, translating complex aerospace concepts into accessible, engaging content.
+            </p>
+          </div>
+          <div class="responsibility-block">
+            <p class="resp-heading amber">Technical Production &amp; Volunteer Coordination</p>
+            <p class="resp-body">
+              Served as technical lead for the Africa Women in Space Conference 2025 — overseeing A/V systems, ensuring sound and visual infrastructure ran without interruption, and coordinating a volunteer team to keep all event operations flowing smoothly end-to-end.
+            </p>
+          </div>
+        </div>
+
+        <a href="https://womeninspace.ke/" target="_blank" rel="noopener" class="org-link">
+          womeninspace.ke
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
     </div>
 
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-in">
+  <p class="section-label">Engineering Work</p>
+  <h2 class="section-title">Projects &amp; Portfolio</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <p class="project-num">01</p>
+      <p class="project-title">Drone Control System for GPS-Denied Environments</p>
+      <p class="project-desc">Autonomous flight logic using inertial backtracking for navigation where GPS is unavailable or compromised. Designed for robust real-world deployment scenarios.</p>
+      <div class="tags">
+        <span class="tag">C++</span>
+        <span class="tag">Inertial Nav</span>
+        <span class="tag">Autonomous Systems</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <p class="project-num">02</p>
+      <p class="project-title">Aircraft Weight &amp; Balance Web Application</p>
+      <p class="project-desc">Full-stack web app built on the MERN stack with MATLAB integration, automating complex weight and balance calculations for general aviation flight planning.</p>
+      <div class="tags">
+        <span class="tag">MERN Stack</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">Cloud Deployment</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <p class="project-num">03</p>
+      <p class="project-title">FEA of Cessna Landing Gear</p>
+      <p class="project-desc">Detailed structural analysis of Cessna landing gear components to evaluate stress distribution and identify potential failure points under operational loads.</p>
+      <div class="tags">
+        <span class="tag">Ansys Workbench</span>
+        <span class="tag">FEA</span>
+        <span class="tag">Structural Analysis</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <p class="project-num">04</p>
+      <p class="project-title">Aerodynamic Airfoil Design &amp; Optimisation</p>
+      <p class="project-desc">Designed and simulated high-performance airfoils in XFOIL, optimising lift-to-drag ratios for specific flight regimes through iterative geometric refinement.</p>
+      <div class="tags">
+        <span class="tag amber-tag">XFOIL</span>
+        <span class="tag amber-tag">Aerodynamics</span>
+        <span class="tag amber-tag">CFD</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <p class="project-num">05</p>
+      <p class="project-title">Sustainable Aviation Fuel Feasibility Study</p>
+      <p class="project-desc">Analysed the economic and technical viability of SAF production from cooking oil feedstock to support aviation's carbon reduction roadmap.</p>
+      <div class="tags">
+        <span class="tag amber-tag">SAF</span>
+        <span class="tag amber-tag">Sustainability</span>
+        <span class="tag amber-tag">Technical Research</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="fade-in">
+  <p class="section-label">Professional Background</p>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <p class="timeline-period">Jan 2025<br />Present</p>
+      </div>
+      <div class="timeline-content">
+        <p class="timeline-role">Freelance Visa Consultant</p>
+        <p class="timeline-org">Self-Employed · Nairobi, Kenya</p>
+        <ul class="timeline-bullets">
+          <li>Manage end-to-end visa application processes for multiple clients simultaneously.</li>
+          <li>Maintain regulatory compliance trackers and handle appointment scheduling.</li>
+          <li>Advise clients on consular interview procedures and documentation requirements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <p class="timeline-period">Sep 2025<br />Oct 2025</p>
+      </div>
+      <div class="timeline-content">
+        <p class="timeline-role">Warehouse &amp; Inventory Assistant</p>
+        <p class="timeline-org">Simba Corp · Nairobi, Kenya</p>
+        <ul class="timeline-bullets">
+          <li>Verified stock using technical part numbers and conducted daily physical audits.</li>
+          <li>Maintained data integrity within the warehouse management system.</li>
+          <li>Prepared stock reports and tally sheets for management review.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <p class="timeline-period">Nov 2023<br />Jan 2025</p>
+      </div>
+      <div class="timeline-content">
+        <p class="timeline-role">Freelance Data Analyst</p>
+        <p class="timeline-org">Self-Employed · Nairobi, Kenya</p>
+        <ul class="timeline-bullets">
+          <li>Performed data cleaning and trend forecasting using Excel, Google Sheets, and Power BI.</li>
+          <li>Developed interactive dashboards to visualise performance metrics and predictive analytics.</li>
+          <li>Consulted directly with clients to identify business questions and translate them into data insights.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <p class="section-label">Technical Toolkit</p>
+  <h2 class="section-title">Skills &amp; Tools</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <p class="skill-group-title">Design &amp; Simulation</p>
+      <div class="skill-list">
+        <span class="skill-item">SolidWorks</span>
+        <span class="skill-item">Autodesk Fusion 360</span>
+        <span class="skill-item">Ansys Workbench (FEA)</span>
+        <span class="skill-item">XFOIL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Data &amp; Analytics</p>
+      <div class="skill-list">
+        <span class="skill-item">MATLAB</span>
+        <span class="skill-item">Power BI</span>
+        <span class="skill-item">Microsoft Excel</span>
+        <span class="skill-item">Data Analytics</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Software Development</p>
+      <div class="skill-list">
+        <span class="skill-item">C++</span>
+        <span class="skill-item">MERN Stack (MongoDB, Express, React, Node)</span>
+        <span class="skill-item">Cloud Deployment</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Aviation &amp; Operations</p>
+      <div class="skill-list">
+        <span class="skill-item">Aviation Legislation</span>
+        <span class="skill-item">Aircraft Maintenance Procedures</span>
+        <span class="skill-item">Event Programme Design</span>
+        <span class="skill-item">Technical Production (A/V)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION & CERTS -->
+<section class="fade-in">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education &amp; Certifications</h2>
+
+  <div class="edu-grid" style="margin-bottom: 2rem;">
+    <div class="edu-card">
+      <p class="edu-badge">Undergraduate Degree</p>
+      <p class="edu-title">Bachelor of Engineering in Aeronautical Engineering</p>
+      <p class="edu-org">Technical University of Kenya</p>
+      <p class="edu-period">Sep 2021 – Dec 2026 · Dept. of Mechanical &amp; Aerospace Engineering</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-badge">Secondary Education</p>
+      <p class="edu-title">Kenya Certificate of Secondary Education</p>
+      <p class="edu-org">Kitui High School</p>
+      <p class="edu-period">Jan 2016 – Jan 2021 · Aggregate Score: A</p>
+    </div>
+  </div>
+
+  <div class="edu-card" style="max-width: 600px;">
+    <p class="edu-badge">Certifications &amp; Recognition</p>
+    <div class="cert-list">
+      <div class="cert-item">
+        <div>
+          <p class="cert-name">Millennium Fellowship Graduate</p>
+          <p class="cert-issuer">UN Academic Impact (MCN)</p>
+        </div>
+        <span class="cert-year">2025</span>
+      </div>
+      <div class="cert-item">
+        <div>
+          <p class="cert-name">Volunteer Recognition</p>
+          <p class="cert-issuer">Institute of Electrical and Electronics Engineers (IEEE)</p>
+        </div>
+        <span class="cert-year">2025</span>
+      </div>
+      <div class="cert-item">
+        <div>
+          <p class="cert-name">Sustainability Challenge Finalist</p>
+          <p class="cert-issuer">SkyTeam KLM – Kenya Airways</p>
+        </div>
+        <span class="cert-year">2025</span>
+      </div>
+      <div class="cert-item">
+        <div>
+          <p class="cert-name">First Aid Certification</p>
+          <p class="cert-issuer">St. John's Ambulance</p>
+        </div>
+        <span class="cert-year">2020</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-section fade-in" id="contact">
+  <div>
+    <p class="section-label">Get in Touch</p>
+    <h2 class="contact-headline">Let's build<br /><span>something</span> together.</h2>
+    <p class="contact-text">Open to conversations about engineering, event collaboration, data work, or anything at the intersection of aviation and technology.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:Kevinmaina846@gmail.com" class="contact-link">
+      <div class="contact-link-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg>
+      </div>
+      <div>
+        <p class="contact-link-label">Email</p>
+        <p class="contact-link-value">Kevinmaina846@gmail.com</p>
+      </div>
+    </a>
+    <a href="tel:+254758871708" class="contact-link">
+      <div class="contact-link-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+      </div>
+      <div>
+        <p class="contact-link-label">Phone</p>
+        <p class="contact-link-value">+254 758 871 708</p>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/kevin-maina-k" target="_blank" rel="noopener" class="contact-link">
+      <div class="contact-link-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div>
+        <p class="contact-link-label">LinkedIn</p>
+        <p class="contact-link-value">linkedin.com/in/kevin-maina-k</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>Kevin Kuria Maina · Aeronautical Engineering · Nairobi, Kenya</p>
+  <p>Built with care · 2025</p>
+</footer>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
